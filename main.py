@@ -19,10 +19,10 @@ while len(guessed_cities) < 27:
                                    prompt="What's another city's name?").title()
     #print(answer_city)
     if answer_city == "Exit":
-        missing_cities = []
-        for city in all_cities:
-            if city not in guessed_cities:
-                missing_cities.append(city)
+        missing_cities = [city for city in all_cities if city not in guessed_cities]
+        # for city in all_cities:
+        #     if city not in guessed_cities:
+        #         missing_cities.append(city)
         #print(missing_cities)
         new_data = pandas.DataFrame(missing_cities)
         new_data.to_csv("cities_to_learn.csv")
